@@ -20,6 +20,8 @@ echo $cart->getTotalSum().PHP_EOL; // This must print 2900
 $cartItem2->increaseQuantity();
 $cartItem2->increaseQuantity();
 
+$cartItem1 = $cart->addProduct($product1, 1);
+
 echo "</br>";
 echo "Number of items in cart: ".PHP_EOL;
 echo $cart->getTotalQuantity().PHP_EOL; // This must print 4

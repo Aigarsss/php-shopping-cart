@@ -34,6 +34,10 @@ class Product
         $this->availableQuantity -= $amount;
     }
 
+    public function increaseQuantity($amount) {
+        $this->availableQuantity += $amount;
+    }
+
     /**
      * Add Product $product into cart. If product already exists inside cart
      * it must update quantity.
@@ -62,5 +66,6 @@ class Product
     public function removeFromCart(Cart $cart)
     {
         //TODO Implement method
+
     }
 }

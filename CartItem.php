@@ -27,15 +27,12 @@ class CartItem
         //TODO $quantity must be increased by one.        
         // Bonus: $quantity must not become more than whatever is Product::$availableQuantity
         if ($this->product->getQuantity() - 1 > - 1) {
-            echo "we still have stock";
             $this->product->decreaseQuantity(1);
             $this->quantity += 1;
   
         } else {
-            echo "all out";
+            echo "all out </br>";
         }
-
-
 
     }
 
@@ -43,5 +40,14 @@ class CartItem
     {
         //TODO $quantity must be increased by one.
         // Bonus: Quantity must not become less than 1
+
+        if (!$this->quantity - 1 == 1) {
+            $this->product->increaseQuantity(1);
+            $this->quantity -= 1;
+        } else {
+            return false;
+        }
+        
+        return true;
     }
 }

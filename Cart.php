@@ -24,15 +24,31 @@ class Cart
     public function addProduct(Product $product, int $quantity): CartItem
     {
         //TODO Implement method
-        $product->decreaseQuantity($quantity);
 
-        if (!in_array($product, $this->items)) {
+
+        if (empty($this->items)) {
+            $product->decreaseQuantity($quantity);
             $cartItem = new CartItem($product, $quantity);
             array_push($this->items, $cartItem);
             return $cartItem;
-        } else {
-            echo "need to change quantity"; // TODO
         }
+
+        foreach($this->items as $key => $item ) {
+            if ($item->getCartProduct() == $product) {
+                $product->decreaseQuantity($quantity);
+                while ($quantity > 0) {
+                    $item->increaseQuantity();
+                    $quantity -= 1;
+                }
+                return $item;
+                
+            } else {
+                $cartItem = new CartItem($product, $quantity);
+                array_push($this->items, $cartItem);
+                return $cartItem;
+            }
+        }
+
 
     }
 
